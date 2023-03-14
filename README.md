@@ -17,7 +17,7 @@
 </p>
 
 <h4 align="center"> 
-  Inception is Under construction...
+  Inception is under construction...
 </h4> 
 
 <hr>
