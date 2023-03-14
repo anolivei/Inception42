@@ -16,10 +16,8 @@
   <!-- <img alt="Github stars" src="https://img.shields.io/github/stars/anolivei/Inception42?color=56BEB8" /> -->
 </p>
 
-Status
-
 <h4 align="center"> 
-	🚧  Inception is Under construction...
+  Inception is Under construction...
 </h4> 
 
 <hr>
@@ -43,13 +41,13 @@ services under specific rules using docker compose.
 
 ## Features ##
 
-• A Docker container that contains NGINX with TLSv1.2 or TLSv1.3 only.
+• A Docker container that contains NGINX with TLSv1.2 or TLSv1.3 only.<br>
 • A Docker container that contains WordPress + php-fpm (it must be installed and
-configured) only without nginx.
-• A Docker container that contains MariaDB only without nginx.
-• A volume that contains WordPress database.
-• A second volume that contains WordPress website files.
-• A docker-network that establishes the connection between containers
+configured) only without nginx.<br>
+• A Docker container that contains MariaDB only without nginx.<br>
+• A volume that contains WordPress database.<br>
+• A second volume that contains WordPress website files.<br>
+• A docker-network that establishes the connection between containers.<br>
 
 ## Technologies ##
 
@@ -82,7 +80,8 @@ $ make
 ## License ##
 
 This project is under license from MIT. For more details, see the [LICENSE](LICENSE.md) file.
-
+<br>
+<br>
 
 <div align="center" id="top"> 
   <img src="https://media.tenor.com/JAtSfbZogywAAAAC/inception.gif" alt="Gh_philosophers" />
