@@ -6,7 +6,7 @@
 #    By: anolivei <anolivei@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/30 01:03:21 by anolivei          #+#    #+#              #
-#    Updated: 2023/03/31 16:52:28 by anolivei         ###   ########.fr        #
+#    Updated: 2023/03/31 17:00:18 by anolivei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,9 +17,9 @@ RUN apt-get update && apt-get install -y \
 	php \
 	php-fpm \
 	php-mysql \
-    wget \
+	wget \
 	apt-utils \
-    unzip
+	unzip
 
 # Faz o download e extrai a última versão do WordPress
 RUN wget -P /tmp https://wordpress.org/latest.zip \
@@ -41,7 +41,7 @@ WORKDIR /var/www/wordpress/
 
 # Configura o wordpress
 RUN cp wp-config-sample.php wp-config.php && \
-    mv wp-config-sample.php /var/www/wordpress/wp-config.php && \
+	mv wp-config-sample.php /var/www/wordpress/wp-config.php && \
 	sed -i "s/username_here/$MYSQL_USER/g" /var/www/wordpress/wp-config.php && \
 	sed -i "s/password_here/$MYSQL_PASSWORD/g" /var/www/wordpress/wp-config.php && \
 	sed -i "s/localhost/$MYSQL_HOST/g" /var/www/wordpress/wp-config.php && \
