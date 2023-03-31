@@ -2,7 +2,25 @@ version: '3'
 
 services:
   nginx:
+    image: nginx
+    container_name: nginx
+    depends_on:
+      - wordpress
     build: ./requirements/nginx/
     ports:
       - "443:443"
-    restart: always
+    restart: unless-stopped
+    networks:
+      - backend
+
+  wordpress:
+    image: wordpress
+    container_name: wordpress
+    build: ./requirements/wordpress/
+    restart: unless-stopped
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: bridge
