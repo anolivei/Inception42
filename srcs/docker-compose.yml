@@ -16,10 +16,52 @@ services:
   wordpress:
     image: wordpress
     container_name: wordpress
+    depends_on:
+      - mariadb
     build: ./requirements/wordpress/
     restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      - MYSQL_HOST=mariadb:3306
+      - MYSQL_DATABASE=wordpress
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+    volumes:
+      - wordpress:/var/www/wordpress
     networks:
       - backend
+
+  mariadb:
+    image: mariadb
+    container_name: mariadb
+    build: ./requirements/mariadb/
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      - MYSQL_DATABASE=wordpress
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+    volumes:
+      - mariadb:/var/lib/mysql
+    networks:
+      - backend
+
+volumes:
+  mariadb:
+    driver: local
+    driver_opts:
+      type: none
+      device: ./data/mysql
+      o: bind
+  wordpress:
+    driver: local
+    driver_opts:
+      type: none
+      device: ./data/wordpress
+      o: bind
 
 networks:
   backend:

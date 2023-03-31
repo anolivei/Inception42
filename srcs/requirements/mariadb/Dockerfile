@@ -1,27 +1,20 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
+#    Dockerfile                                         :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: anolivei <anolivei@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/03/13 14:47:30 by anolivei          #+#    #+#              #
-#    Updated: 2023/03/31 00:28:33 by anolivei         ###   ########.fr        #
+#    Created: 2023/03/30 23:40:21 by anolivei          #+#    #+#              #
+#    Updated: 2023/03/30 23:57:50 by anolivei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-all:
-	@mkdir -p srcs/data/mysql && mkdir -p srcs/data/wordpress
-	@docker compose -f ./srcs/docker-compose.yml up -d --build
+FROM debian:latest
 
-down:
-	@docker compose -f ./srcs/docker-compose.yml down
+RUN apt-get update && \
+	apt-get install -y mariadb-server
 
-clean:
-	@docker rmi nginx wordpress mariadb
+EXPOSE 3306
 
-fclean: clean
-	@docker system prune -a --volumes
-	@sudo rm -rf srcs/data/
-
-.PHONY: all down fclean
+CMD service mysql start
