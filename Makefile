@@ -6,15 +6,17 @@
 #    By: anolivei <anolivei@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/13 14:47:30 by anolivei          #+#    #+#              #
-#    Updated: 2023/03/30 19:27:51 by anolivei         ###   ########.fr        #
+#    Updated: 2023/03/30 22:55:47 by anolivei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 all:
-	cd srcs/ && docker-compose up --build -d
+	@docker compose -f ./srcs/docker-compose.yml up -d --build
 
 down:
-	cd srcs/ && docker-compose down
+	@docker compose -f ./srcs/docker-compose.yml down
 
 fclean:
-	docker rmi debian nginx wordpress
+	@docker rmi nginx wordpress
+
+.PHONY: all down fclean
