@@ -6,7 +6,7 @@
 #    By: anolivei <anolivei@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/30 01:03:21 by anolivei          #+#    #+#              #
-#    Updated: 2023/03/31 17:00:18 by anolivei         ###   ########.fr        #
+#    Updated: 2023/04/01 00:33:19 by anolivei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,10 +42,10 @@ WORKDIR /var/www/wordpress/
 # Configura o wordpress
 RUN cp wp-config-sample.php wp-config.php && \
 	mv wp-config-sample.php /var/www/wordpress/wp-config.php && \
-	sed -i "s/username_here/$MYSQL_USER/g" /var/www/wordpress/wp-config.php && \
-	sed -i "s/password_here/$MYSQL_PASSWORD/g" /var/www/wordpress/wp-config.php && \
-	sed -i "s/localhost/$MYSQL_HOST/g" /var/www/wordpress/wp-config.php && \
-	sed -i "s/database_name_here/$MYSQL_DATABASE/g" /var/www/wordpress/wp-config.php && \
+	sed -i "s/username_here/user42/g" /var/www/wordpress/wp-config.php && \
+	sed -i "s/password_here/user42/g" /var/www/wordpress/wp-config.php && \
+	sed -i "s/localhost/mariadb:3306/g" /var/www/wordpress/wp-config.php && \
+	sed -i "s/database_name_here/wordpress/g" /var/www/wordpress/wp-config.php && \
 	chown -R www-data:www-data /var/www/wordpress
 
 # Abre a porta 9000 para o php-fpm
