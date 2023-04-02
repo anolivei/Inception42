@@ -18,15 +18,15 @@ services:
     container_name: wordpress
     depends_on:
       - mariadb
-    build: ./requirements/wordpress/
+    build:
+      context: ./requirements/wordpress/
+      dockerfile: Dockerfile
+      args:
+        MYSQL_HOST: mariadb:3306
+        MYSQL_DATABASE: ${MYSQL_DATABASE}
+        MYSQL_USER: ${MYSQL_USER}
+        MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     restart: unless-stopped
-    env_file:
-      - .env
-    environment:
-      - MYSQL_HOST=mariadb:3306
-      - MYSQL_DATABASE=wordpress
-      - MYSQL_USER=${MYSQL_USER}
-      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
     volumes:
       - wordpress:/var/www/wordpress
     networks:
@@ -35,15 +35,15 @@ services:
   mariadb:
     image: mariadb
     container_name: mariadb
-    build: ./requirements/mariadb/
+    build:
+      context: ./requirements/mariadb/
+      dockerfile: Dockerfile
+      args:
+        MYSQL_DATABASE: ${MYSQL_DATABASE}
+        MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+        MYSQL_USER: ${MYSQL_USER}
+        MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     restart: unless-stopped
-    env_file:
-      - .env
-    environment:
-      - MYSQL_DATABASE=wordpress
-      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-      - MYSQL_USER=${MYSQL_USER}
-      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
     volumes:
       - mariadb:/var/lib/mysql
     networks:
