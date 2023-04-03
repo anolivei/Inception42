@@ -6,7 +6,7 @@
 #    By: anolivei <anolivei@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/30 01:03:21 by anolivei          #+#    #+#              #
-#    Updated: 2023/04/01 15:08:30 by anolivei         ###   ########.fr        #
+#    Updated: 2023/04/03 17:51:51 by anolivei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,11 @@ RUN apt-get update && apt-get install -y \
 	php \
 	php-fpm \
 	php-mysql \
+	php-gd \
+	php-opcache \
+	php-cli \
+	php-curl \
+	php-mbstring \
 	wget \
 	apt-utils \
 	unzip
@@ -36,7 +41,7 @@ COPY ./conf/www.conf /etc/php/7.4/fpm/pool.d/
 
 # Seta o ownership e permissões para as files do WordPress
 RUN chown -R www-data:www-data /var/www/wordpress \
-	&& chmod -R 755 /var/www/wordpress
+	&& chmod -R 777 /var/www/wordpress
 
 # Cria a pasta para que o php possa rodar
 RUN mkdir /run/php
