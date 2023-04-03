@@ -38,6 +38,16 @@
 
 This project consists in a small infrastructure composed of different
 services under specific rules using docker compose.
+<br>
+<br>
+To export backup.sql from db container:
+```shell
+docker exec -it <mariadb_container_name> /bin/bash
+
+mysqldump -u <user> -p <password> <db_name> > backup.sql
+
+docker cp <mariadb_container_name>:/backup.sql /path/to/your/project/
+```
 
 ## Features ##
 
@@ -66,15 +76,24 @@ Before starting, you need to have [Git](https://git-scm.com) and [Docker](https:
 
 ```bash
 # Clone this project
-$ git clone https://github.com/anolivei/Inception42
+git clone https://github.com/anolivei/Inception42
 
 # Access
-$ cd Inception42
+cd Inception42
 
 # Run the project
-$ make
+make
 
-# The server will initialize in the <http://localhost:>
+# The server will initialize in the <https://anolivei.42.fr>
+
+# To stop the project
+make down
+
+# To clean images
+make clean
+
+# To clean images and volumes
+make fclean
 ```
 
 ## License ##
