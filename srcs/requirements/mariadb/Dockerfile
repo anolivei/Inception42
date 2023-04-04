@@ -6,7 +6,7 @@
 #    By: anolivei <anolivei@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/30 23:40:21 by anolivei          #+#    #+#              #
-#    Updated: 2023/04/03 13:37:26 by anolivei         ###   ########.fr        #
+#    Updated: 2023/04/04 16:40:32 by anolivei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,4 +35,4 @@ RUN sed -i 's/bind-address/#bind-address/' /etc/mysql/mariadb.conf.d/50-server.c
 
 EXPOSE 3306
 
-CMD ["mysqld", "--bind-address=0.0.0.0"]
+CMD ["mysqld"]

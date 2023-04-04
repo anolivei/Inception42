@@ -6,7 +6,7 @@
 #    By: anolivei <anolivei@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/30 01:03:21 by anolivei          #+#    #+#              #
-#    Updated: 2023/04/03 17:51:51 by anolivei         ###   ########.fr        #
+#    Updated: 2023/04/04 17:53:10 by anolivei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,10 @@ RUN apt-get update && apt-get install -y \
 RUN wget -P /tmp https://wordpress.org/latest.zip \
 	&& unzip /tmp/latest.zip -d /var/www/ \
 	&& rm /tmp/latest.zip
+
+RUN wget -P /tmp https://downloads.wordpress.org/theme/ketos.1.0.2.zip \
+	&& unzip /tmp/ketos.1.0.2.zip -d /var/www/wordpress/wp-content/themes/ \
+	&& rm /tmp/ketos.1.0.2.zip
 
 # Copia a file .conf para o diretório html
 COPY ./conf/www.conf /etc/php/7.4/fpm/pool.d/
