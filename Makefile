@@ -6,7 +6,7 @@
 #    By: anolivei <anolivei@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/13 14:47:30 by anolivei          #+#    #+#              #
-#    Updated: 2023/04/04 00:24:02 by anolivei         ###   ########.fr        #
+#    Updated: 2023/04/04 00:31:54 by anolivei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,39 +15,39 @@ VOLUMES = $(shell docker volume ls -q)
 IMAGES = $(shell docker images -q)
 
 all: hosts
-	@echo "Creating local data folder"
+	@echo "\033[0;32mCreating local data folder\033[0m"
 	@mkdir -p srcs/data/mysql && mkdir -p srcs/data/wordpress
-	@echo "Up"
+	@echo "\033[0;32mUp\033[0m"
 	@cd srcs/ && docker compose -f docker-compose.yml up -d --build
 
 hosts:
 ifneq (${DOMAIN},anolivei.42.fr)
-	@echo "Adding domain to etc/hosts"
+	@echo "\033[0;32mAdding domain to etc/hosts\033[0m"
 	@cp /etc/hosts ./hosts_backup
 	@sudo rm /etc/hosts
 	@sudo cp ./srcs/requirements/nginx/tools/hosts /etc/
 endif
 
 down:
-	@echo "Down"
+	@echo "\033[0;32mDown\033[0m"
 	@cd srcs/ && docker compose -f docker-compose.yml down
 
 clean:
 ifneq ($(VOLUMES),)
-	@echo "Removing volumes"
+	@echo "\033[0;32mRemoving volumes\033[0m"
 	@docker volume rm $(VOLUMES)
 endif
 ifneq ($(IMAGES),)
-	@echo "Removing images"
+	@echo "\033[0;32mRemoving images\033[0m"
 	@docker rmi $(IMAGES)
 endif
 
 fclean: clean
-	@echo "Prune volumes"
+	@echo "\033[0;32mPrune volumes\033[0m"
 	@docker system prune -a --volumes
-	@echo "Removing local data folder"
+	@echo "\033[0;32mRemoving local data folder\033[0m"
 	@sudo rm -rf srcs/data/
-	@echo "Restauring etc/hosts"
+	@echo "\033[0;32mRestoring etc/hosts\033[0m"
 	@sudo mv ./hosts_backup /etc/hosts
 
 .PHONY: all hosts down clean fclean

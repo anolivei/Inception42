@@ -16,11 +16,6 @@
   <!-- <img alt="Github stars" src="https://img.shields.io/github/stars/anolivei/Inception42?color=56BEB8" /> -->
 </p>
 
-<h4 align="center"> 
-  Inception is under construction...
-</h4> 
-
-<hr>
 
 <p align="center">
   <a href="#about">About</a> &#xa0; | &#xa0; 
@@ -89,10 +84,10 @@ make
 # To stop the project
 make down
 
-# To clean images
+# To clean images and volumes
 make clean
 
-# To clean images and volumes
+# To prune volumes, remove local data volume and restore the /etc/hosts
 make fclean
 ```
 
