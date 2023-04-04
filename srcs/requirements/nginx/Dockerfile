@@ -6,7 +6,7 @@
 #    By: anolivei <anolivei@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/21 18:07:15 by anolivei          #+#    #+#              #
-#    Updated: 2023/04/03 17:48:15 by anolivei         ###   ########.fr        #
+#    Updated: 2023/04/04 00:05:35 by anolivei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,9 +29,6 @@ RUN openssl x509 -req -days 365 -in /etc/nginx/ssl/server.csr -signkey /etc/ngin
 
 # Copia o arquivo de configuração do Nginx para o contêiner
 COPY ./conf/nginx.conf /etc/nginx/conf.d/default.conf
-
-# Copia um arquivo html para o contêiner
-COPY ./tools/index.html /var/www/html
 
 # Abre a porta 443
 EXPOSE 443
