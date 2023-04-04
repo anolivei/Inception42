@@ -6,7 +6,7 @@
 #    By: anolivei <anolivei@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/13 14:47:30 by anolivei          #+#    #+#              #
-#    Updated: 2023/04/04 00:31:54 by anolivei         ###   ########.fr        #
+#    Updated: 2023/04/04 20:07:16 by anolivei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ IMAGES = $(shell docker images -q)
 
 all: hosts
 	@echo "\033[0;32mCreating local data folder\033[0m"
-	@mkdir -p srcs/data/mysql && mkdir -p srcs/data/wordpress
+	@sudo mkdir -p /home/anolivei/data/mysql && sudo mkdir -p /home/anolivei/data/wordpress
 	@echo "\033[0;32mUp\033[0m"
 	@cd srcs/ && docker compose -f docker-compose.yml up -d --build
 
@@ -46,7 +46,7 @@ fclean: clean
 	@echo "\033[0;32mPrune volumes\033[0m"
 	@docker system prune -a --volumes
 	@echo "\033[0;32mRemoving local data folder\033[0m"
-	@sudo rm -rf srcs/data/
+	@sudo rm -rf /home/anolivei/
 	@echo "\033[0;32mRestoring etc/hosts\033[0m"
 	@sudo mv ./hosts_backup /etc/hosts
 

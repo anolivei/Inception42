@@ -6,7 +6,7 @@
 #    By: anolivei <anolivei@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/30 23:40:21 by anolivei          #+#    #+#              #
-#    Updated: 2023/04/04 16:40:32 by anolivei         ###   ########.fr        #
+#    Updated: 2023/04/04 20:03:47 by anolivei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ ARG MYSQL_PASSWORD
 RUN apt-get update && \
 	apt-get install -y mariadb-server
 
-COPY		./conf/backup.sql /
+COPY ./conf/backup.sql /
 
 # Configure MariaDB
 RUN sed -i 's/bind-address/#bind-address/' /etc/mysql/mariadb.conf.d/50-server.cnf && \

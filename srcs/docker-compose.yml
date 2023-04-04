@@ -56,13 +56,13 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: ./data/mysql
+      device: /home/anolivei/data/mysql
       o: bind
   wordpress:
     driver: local
     driver_opts:
       type: none
-      device: ./data/wordpress
+      device: /home/anolivei/data/wordpress
       o: bind
 
 networks:
