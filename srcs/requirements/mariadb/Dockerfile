@@ -6,11 +6,11 @@
 #    By: anolivei <anolivei@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/30 23:40:21 by anolivei          #+#    #+#              #
-#    Updated: 2023/04/04 20:03:47 by anolivei         ###   ########.fr        #
+#    Updated: 2023/04/04 23:21:44 by anolivei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-FROM debian:latest
+FROM debian:buster
 
 ARG MYSQL_DATABASE
 ARG MYSQL_ROOT_PASSWORD

@@ -6,11 +6,11 @@
 #    By: anolivei <anolivei@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/30 01:03:21 by anolivei          #+#    #+#              #
-#    Updated: 2023/04/04 17:53:10 by anolivei         ###   ########.fr        #
+#    Updated: 2023/04/04 23:21:07 by anolivei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-FROM debian:latest
+FROM debian:buster
 
 ARG MYSQL_HOST
 ARG MYSQL_DATABASE
@@ -19,14 +19,14 @@ ARG MYSQL_PASSWORD
 
 # Instala as dependências
 RUN apt-get update && apt-get install -y \
-	php \
-	php-fpm \
-	php-mysql \
-	php-gd \
-	php-opcache \
-	php-cli \
-	php-curl \
-	php-mbstring \
+	php7.3 \
+	php7.3-fpm \
+	php7.3-mysql \
+	php7.3-gd \
+	php7.3-opcache \
+	php7.3-cli \
+	php7.3-curl \
+	php7.3-mbstring \
 	wget \
 	apt-utils \
 	unzip
@@ -41,7 +41,7 @@ RUN wget -P /tmp https://downloads.wordpress.org/theme/ketos.1.0.2.zip \
 	&& rm /tmp/ketos.1.0.2.zip
 
 # Copia a file .conf para o diretório html
-COPY ./conf/www.conf /etc/php/7.4/fpm/pool.d/
+COPY ./conf/www.conf /etc/php/7.3/fpm/pool.d/
 
 # Seta o ownership e permissões para as files do WordPress
 RUN chown -R www-data:www-data /var/www/wordpress \
@@ -66,4 +66,4 @@ RUN cp wp-config-sample.php wp-config.php && \
 EXPOSE 9000
 
 # Inicia php-fpm
-CMD ["php-fpm7.4", "-F"]
+CMD ["php-fpm7.3", "-F"]

@@ -6,11 +6,11 @@
 #    By: anolivei <anolivei@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/21 18:07:15 by anolivei          #+#    #+#              #
-#    Updated: 2023/04/04 00:05:35 by anolivei         ###   ########.fr        #
+#    Updated: 2023/04/04 23:07:36 by anolivei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-FROM debian:latest
+FROM debian:buster
 
 # Instala as dependências
 RUN apt-get update && apt-get install -y nginx openssl
