@@ -91,6 +91,8 @@ make clean
 make fclean
 ```
 
+<h1 align="center"> <img src="https://raw.githubusercontent.com/anolivei/Inception42/main/pictures/inception.png" alt="inception"  width="1000"></h1>
+
 ## License ##
 
 This project is under license from MIT. For more details, see the [LICENSE](LICENSE.md) file.
