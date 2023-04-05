@@ -6,12 +6,14 @@
 #    By: anolivei <anolivei@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/30 01:03:21 by anolivei          #+#    #+#              #
-#    Updated: 2023/04/04 23:21:07 by anolivei         ###   ########.fr        #
+#    Updated: 2023/04/04 23:49:19 by anolivei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+# Usa a penúltima imagem do debian como base
 FROM debian:buster
 
+# Lista as variáveis de ambiente
 ARG MYSQL_HOST
 ARG MYSQL_DATABASE
 ARG MYSQL_USER
@@ -36,6 +38,7 @@ RUN wget -P /tmp https://wordpress.org/latest.zip \
 	&& unzip /tmp/latest.zip -d /var/www/ \
 	&& rm /tmp/latest.zip
 
+# Instala o tema ketos do wordpress
 RUN wget -P /tmp https://downloads.wordpress.org/theme/ketos.1.0.2.zip \
 	&& unzip /tmp/ketos.1.0.2.zip -d /var/www/wordpress/wp-content/themes/ \
 	&& rm /tmp/ketos.1.0.2.zip
